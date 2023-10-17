@@ -14,8 +14,14 @@ terraform {
       source  = "viktorradnai/bcrypt"
       version = ">= 0.1.2"
     }
+    tls = {
+      source  = "hashicorp/tls"
+      version = "3.0.0" 
+    }
   }
 }
+
+provider "tls" {}
 
 provider "helm" {
   kubernetes {

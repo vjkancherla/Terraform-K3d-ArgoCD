@@ -2,6 +2,8 @@ configs:
   secret:
     argocdServerAdminPassword: ${admin_password}
 
+
+
 controller:
   metrics:
     serviceMonitor:
@@ -20,6 +22,19 @@ repoServer:
       enabled: false
 
 server:
+  ingress:
+    enabled: true
+    annotations:
+      kubernetes.io/ingress.class: "nginx"
+      nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
+      nginx.ingress.kubernetes.io/ssl-passthrough: "true"
+    ingressClassName: "nginx"
+    hosts: 
+      - ${argocd_hostname}
+    tls:
+      - secretName: ${argocd_tls_secret}
+        hosts:
+           - ${argocd_hostname}
   metrics:
     serviceMonitor:
       enabled: false

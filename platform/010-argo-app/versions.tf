@@ -10,7 +10,8 @@ terraform {
 }
 
 provider "argocd" {
-  server_addr = "localhost:8080"
+  insecure    = true # Trust self-signed certificate
+  server_addr = "argocd.127.0.0.1.nip.io:8080"
   username    = "admin"
   password    = "password"
 }

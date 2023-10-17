@@ -9,6 +9,15 @@ terraform init
 echo "Running terraform apply in platform/000-infrastructure/000-k3d with auto-approve"
 terraform apply --auto-approve
 
+echo "Changing directory to platform/000-infrastructure/005-nginx-ingress"
+cd ../005-nginx-ingress
+
+echo "Running terraform init in platform/000-infrastructure/005-nginx-ingress"
+terraform init
+
+echo "Running terraform apply in platform/000-infrastructure/005-nginx-ingress with auto-approve"
+terraform apply --auto-approve
+
 echo "Changing directory to platform/000-infrastructure/010-argocd"
 cd ../010-argocd
 
