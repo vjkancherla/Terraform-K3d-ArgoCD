@@ -12,7 +12,7 @@ echo "Running terraform destroy in platform/000-infrastructure/010-argocd with a
 terraform destroy --auto-approve
 
 # Change directory to platform/000-infrastructure/005-nginx-ingress
-echo "Changing directory to platform/000-infrastructure/010-argocd"
+echo "Changing directory to platform/000-infrastructure/005-nginx-ingress"
 cd platform/000-infrastructure/005-nginx-ingress
 
 # Run Terraform destroy with auto-approve
