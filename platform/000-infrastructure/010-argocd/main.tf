@@ -53,30 +53,6 @@ resource "bcrypt_hash" "argo" {
   cleartext = "password"
 }
 
-# module "argocd" {
-#   depends_on = [kubernetes_secret.argocd_tls]
-
-#   source  = "squareops/argocd/kubernetes"
-#   version = "2.0.0"
-
-#   argocd_config = {
-#     hostname                     = local.argocd_hostname
-#     redis_ha_enabled             = false
-#     autoscaling_enabled          = false
-#     slack_notification_token     = ""
-#     argocd_notifications_enabled = false
-
-#     values_yaml = templatefile(
-#       "${path.module}/helm-values.yaml.tftpl",
-#       { 
-#         admin_password = bcrypt_hash.argo.id 
-#         argocd_hostname = local.argocd_hostname
-#         argocd_tls_secret = kubernetes_secret.argocd_tls.name
-#       }
-#     )
-#   }
-# }
-
 resource "helm_release" "argocd" {
   depends_on = [kubernetes_secret.argocd_tls]
 
