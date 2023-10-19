@@ -1,5 +1,14 @@
 #!/bin/bash
 
+# Define ANSI escape codes for colors
+RED='\033[0;31m'
+GREEN='\033[0;32m'
+NC='\033[0m'  # No color
+
+# Display a red message indicating that infrastructure destruction is starting.
+echo -e "${RED}Starting infrastructure DESTRUCTION...${NC}"
+echo 
+
 # Store the current working directory
 ROOT_DIR="$(pwd)"
 
@@ -38,6 +47,7 @@ find . -type d -name ".terraform" -exec rm -rf "{}" \;
 echo "Removing terraform.tfstate* files from the directory where the script was invoked"
 find . -type f -name "terraform.tfstate*" -exec rm -f {} +
 
-# Optionally, you can add additional commands or actions as needed
+# Display a green message indicating that infrastructure destruction is complete.
+echo 
+echo -e "${GREEN}Infrastructure DESTRUCTION completed.${NC}"
 
-echo "Destroy script completed."

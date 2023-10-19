@@ -50,7 +50,7 @@ resource "argocd_application" "helm" {
   }
 
   spec {
-    project = local.argo_project_name
+    project = "default" #local.argo_project_name
     
     destination {
       server    = "https://kubernetes.default.svc"

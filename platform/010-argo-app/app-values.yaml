@@ -13,7 +13,7 @@ deployment:
 
 image:
   repository:
-    name: ghcr.io/stefanprodan/podinfo
+    name: stefanprodan
     isPrivate: false
     secretName: null
   name: podinfo
