@@ -1,27 +1,30 @@
 # Terraform-K3d-ArgoCD
 
+## Purpose
 
-PURPOSE:
-Provide an PLATFORM to allow for creation of ArgoCD Applications using a terraform module
+Provide a platform to allow for the creation of ArgoCD Applications using a Terraform module.
 
-THE PLATFORM
-- Created with Terraform
-    - K8s cluster running on K3D
-    - Nginix Ingress Controller
-    - ArgoCD 
-        - with an Ingress to accept HTTPS connections
-        - self-signed TLS certificate
+## The Platform
 
+- **Infrastructure**: Created with Terraform
+    - **Kubernetes**: K8s cluster running on K3D
+    - **Ingress Controller**: Nginix Ingress Controller
+    - **ArgoCD**: 
+        - Features an Ingress to accept HTTPS connections
+        - Uses a self-signed TLS certificate
 
-THE TERRAFORM MODULE FOR ArgoCD Applications
-- Creates an ArgoCD Application
-    - uses a generice helm chart located at: https://github.com/b3outputs/helm-charts
-    - uses a yaml file to pass values to the helm chart
+## The Terraform Module for ArgoCD Applications
 
-EXAMPLE:
+- **Functionality**: Creates an ArgoCD Application
+    - Utilizes a generic Helm chart available at [b3outputs/helm-charts](https://github.com/b3outputs/helm-charts)
+    - Employs a yaml file to pass values to the Helm chart
+
+## Example
+
+```hcl
 module "argocd_app" {
   source  = "./argocd_module"
-
+  
   argo_project_name    = "my-special-project"
   argocd_namespace     = "argocd"
   apps_namespace       = "my-apps"
@@ -31,7 +34,4 @@ module "argocd_app" {
 }
 
 output "project_name" {
-  value = module.argocd_app.project_name
-}
-
-
+ 
