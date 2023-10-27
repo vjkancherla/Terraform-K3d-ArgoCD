@@ -6,8 +6,11 @@ GREEN='\033[0;32m'
 NC='\033[0m'  # No color
 
 # Display a red message indicating that infrastructure destruction is starting.
-echo -e "${RED}Starting infrastructure DESTRUCTION...${NC}"
+echo -e "${RED}Starting PLATFORM infrastructure DESTRUCTION...${NC}"
 echo 
+
+# Find and kill all kubectl port-forward processes
+pkill -f "kubectl port-forward"
 
 # Store the current working directory
 ROOT_DIR="$(pwd)"
@@ -49,5 +52,5 @@ find . -type f -name "terraform.tfstate*" -exec rm -f {} +
 
 # Display a green message indicating that infrastructure destruction is complete.
 echo 
-echo -e "${GREEN}Infrastructure DESTRUCTION completed.${NC}"
+echo -e "${GREEN}PLATFORM Infrastructure DESTRUCTION completed.${NC}"
 
